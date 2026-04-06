@@ -1,21 +1,24 @@
+// Game.java
 public class Game {
     public static void main(String[] args) {
-        // Khởi tạo lính thông qua Proxy
+        // 1. Đăng ký các loại trang bị vào hệ thống (Cấu hình một lần)
+        SoldierProxy.registerEquipment("Kiếm", soldier -> new SwordDecorator(soldier));
+        SoldierProxy.registerEquipment("Khiên", soldier -> new ShieldDecorator(soldier));
+
+        // 2. Khởi tạo nhân vật
         Soldier mySoldier = new SoldierProxy(new Infantryman());
 
-        System.out.println("--- Trang bị đồ lần 1 ---");
-        mySoldier.addSword();
-        mySoldier.addShield();
+        System.out.println("--- Tiến hành trang bị ---");
+        mySoldier.equip("Kiếm");
+        mySoldier.equip("Khiên");
+        mySoldier.equip("Kiếm"); // Thử trang bị trùng
 
-        System.out.println("\n--- Thử trang bị trùng lặp (Ràng buộc Proxy) ---");
-        mySoldier.addShield(); 
+        System.out.println("\n--- Kiểm tra chỉ số ---");
+        int damage = mySoldier.hit();
+        System.out.println("\nTổng sát thương: " + damage);
 
-        System.out.println("\n--- Attack (hit) ---");
-        int totalHit = mySoldier.hit();
-        System.out.println("\nTổng lực tấn công: " + totalHit);
-
-        System.out.println("\n--- Defense (wardOff) ---");
-        boolean isAlive = mySoldier.wardOff(12);
-        System.out.println("\nCòn sống: " + isAlive);
+        System.out.println("\n--- Kiểm tra phòng thủ ---");
+        // Sát thương 20 -> Armor giảm còn 10 -> Shield giảm còn 5 -> Infantryman nhận 5
+        mySoldier.wardOff(20); 
     }
 }

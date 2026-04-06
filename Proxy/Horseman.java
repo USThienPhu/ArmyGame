@@ -15,6 +15,6 @@ class Horseman implements Soldier {
         return hp > 0;
     }
 
-    public void addShield() { throw new UnsupportedOperationException(); }
-    public void addSword() { throw new UnsupportedOperationException(); }
+    @Override
+    public void equip(String equipmentName) {   }
 }

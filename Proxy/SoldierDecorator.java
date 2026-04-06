@@ -9,6 +9,10 @@ abstract class SoldierDecorator implements Soldier {
     public boolean wardOff(int strength) { return decoratedSoldier.wardOff(strength); }
     
     // Chuyển tiếp yêu cầu xuống đối tượng bên trong
-    public void addShield() { decoratedSoldier.addShield(); }
-    public void addSword() { decoratedSoldier.addSword(); }
+    // public void addShield() { decoratedSoldier.addShield(); }
+    // public void addSword() { decoratedSoldier.addSword(); }
+    @Override
+    public void equip(String equipmentName) {
+        decoratedSoldier.equip(equipmentName);
+    }
 }
