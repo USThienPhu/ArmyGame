@@ -1,17 +1,14 @@
 class ShieldDecorator extends SoldierDecorator {
+    private int durability = 100;
+
     public ShieldDecorator(Soldier soldier) { super(soldier); }
 
     @Override
-    public int hit() {
-        int baseHit = decoratedSoldier.hit();
-        System.out.print(" -> Shield(+0)");
-        return baseHit;
-    }
-
-    @Override
     public boolean wardOff(int strength) {
-        int reducedStrength = Math.max(0, strength - 5);
-        System.out.print("Shield(block 5) -> ");
+        int blockAmount = (5 * durability) / 100;
+        int reducedStrength = Math.max(0, strength - blockAmount);
+        System.out.print("Shield(block " + blockAmount + ", bền: " + durability + "%) -> ");
+        durability = Math.max(0, durability - 15);
         return decoratedSoldier.wardOff(reducedStrength);
     }
 }

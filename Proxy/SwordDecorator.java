@@ -1,16 +1,16 @@
 class SwordDecorator extends SoldierDecorator {
+    private int durability = 100; // Độ bền ban đầu
+
     public SwordDecorator(Soldier soldier) { super(soldier); }
 
     @Override
     public int hit() {
         int baseHit = decoratedSoldier.hit();
-        System.out.print(" -> Sword(+7)");
-        return baseHit + 7;
-    }
-
-    @Override
-    public boolean wardOff(int strength) {
-        System.out.print("Sword(no def) -> ");
-        return decoratedSoldier.wardOff(strength);
+        
+        int bonus = Math.max(1, (7 * durability) / 100);
+        System.out.print(" -> Sword(+" + bonus + ", bền: " + durability + "%)");
+        durability = Math.max(0, durability - 10); 
+        
+        return baseHit + bonus;
     }
 }
