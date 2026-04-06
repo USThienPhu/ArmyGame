@@ -7,8 +7,7 @@ class ScienceFictionFactory implements SoldierFactory {
 
     @Override
     public void registerEraEquipment() {
-        // Thêm "ScienceFiction" làm tham số đầu tiên
-        SoldierProxy.registerEquipment("ScienceFiction", "Kiếm Laser", soldier -> new LaserSwordDecorator(soldier));
-        SoldierProxy.registerEquipment("ScienceFiction", "Giáp Nano", soldier -> new NanoArmorDecorator(soldier));
+        SoldierProxy.registerEquipment("ScienceFiction", "Laser Sword", soldier -> new LaserSwordDecorator(soldier));
+        SoldierProxy.registerEquipment("ScienceFiction", "Nano Armor", soldier -> new NanoArmorDecorator(soldier));
     }
 }

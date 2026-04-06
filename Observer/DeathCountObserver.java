@@ -1,4 +1,3 @@
-// DeathCountObserver.java
 public class DeathCountObserver implements DeathObserver {
     private static final DeathCountObserver instance = new DeathCountObserver();
     private int totalDeaths = 0;

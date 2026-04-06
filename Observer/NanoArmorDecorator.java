@@ -3,11 +3,10 @@ class NanoArmorDecorator extends SoldierDecorator {
 
     @Override
     public boolean wardOff(int strength) {
-        // Công nghệ Nano: Hấp thụ 50% sát thương nhận vào
         int absorbed = strength / 2;
         int remainingDamage = strength - absorbed;
         
-        System.out.print("[Lưới Nano hấp thụ 50%: -" + absorbed + " dmg] -> ");
+        System.out.print("[Nano Armor absorb 50%: -" + absorbed + " dmg] -> ");
         return decoratedSoldier.wardOff(remainingDamage);
     }
 }

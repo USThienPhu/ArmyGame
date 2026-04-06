@@ -21,8 +21,8 @@ class CountVisitor implements SoldierVisitor {
     public void visit(Horseman h) { horsemanCount++; }
 
     public void printReport() {
-        System.out.println("=== THỐNG KÊ QUÂN SỐ ===");
-        System.out.println("Bộ binh: " + infantryCount);
-        System.out.println("Kỵ binh: " + horsemanCount);
+        System.out.println("=== ARMY COUNT ===");
+        System.out.println("Infantry: " + infantryCount);
+        System.out.println("Cavalry: " + horsemanCount);
     }
 }

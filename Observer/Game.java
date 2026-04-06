@@ -1,71 +1,62 @@
 public class Game {
     public static void main(String[] args) {
-        // --- BƯỚC 1: KHỞI TẠO CÁC FACTORY THỜI ĐẠI ---
         MedievalFactory medFactory = new MedievalFactory();
         WorldWarFactory wwFactory = new WorldWarFactory();
         ScienceFictionFactory sfFactory = new ScienceFictionFactory();
 
-        // --- BƯỚC 2: ĐĂNG KÝ TRANG BỊ VÀO HỆ THỐNG ---
-        // Việc này giúp Proxy biết thời đại nào có những món đồ gì
         medFactory.registerEraEquipment();
         wwFactory.registerEraEquipment();
         sfFactory.registerEraEquipment();
 
-        System.out.println("=== KHỞI TẠO QUÂN ĐỘI ĐA THỜI ĐẠI ===\n");
+        System.out.println("=== INITIALIZING MULTI-ERA ARMY ===\n");
 
-        // --- BƯỚC 3: TẠO BINH LÍNH (Chưa có trang bị sẵn) ---
-        // Knight thuộc thời Medieval
-        SoldierProxy knight = new SoldierProxy("Hiệp sĩ Arthur", "Medieval", medFactory.createHorseman());
+        SoldierProxy knight = new SoldierProxy("Sir Arthur", "Medieval", medFactory.createHorseman());
         
-        // Marine thuộc thời WorldWar
-        SoldierProxy marine = new SoldierProxy("Lính thủy đánh bộ", "WorldWar", wwFactory.createInfantryman());
+        SoldierProxy marine = new SoldierProxy("Marine Sergeant", "WorldWar", wwFactory.createInfantryman());
         
-        // Cyborg thuộc thời ScienceFiction
-        SoldierProxy cyborg = new SoldierProxy("Chiến binh Nano", "ScienceFiction", sfFactory.createInfantryman());
+        SoldierProxy cyborg = new SoldierProxy("Nano Warrior", "ScienceFiction", sfFactory.createInfantryman());
 
 
-        // --- BƯỚC 4: KIỂM TRA RÀNG BUỘC (TEST CONSTRAINT) ---
-        System.out.println("--- THỬ NGHIỆM TRANG BỊ SAI THỜI ĐẠI (Sẽ thất bại) ---");
+        System.out.println("--- TESTING INVALID ERA EQUIPMENT (Should Fail) ---");
         
-        // Hiệp sĩ trung cổ không thể dùng Súng trường của Thế chiến
-        knight.equip("Súng trường"); 
+        knight.equip("Rifle");
         
-        // Lính thế chiến không thể dùng Kiếm Laser của tương lai
-        marine.equip("Kiếm Laser");
+        marine.equip("Laser Sword");
         
-        // Chiến binh tương lai không dùng Giáp sắt thô sơ
-        cyborg.equip("Giáp sắt");
+        cyborg.equip("Iron Armor");
 
 
-        // --- BƯỚC 5: TRANG BỊ ĐÚNG THỜI ĐẠI (TEST VALID EQUIP) ---
-        System.out.println("\n--- TRANG BỊ ĐÚNG THỜI ĐẠI (Sẽ thành công) ---");
+        System.out.println("\n--- TESTING VALID ERA EQUIPMENT (Should Succeed) ---");
         
-        knight.equip("Kiếm");
-        knight.equip("Giáp sắt");
+        knight.equip("Sword");
+        knight.equip("Iron Armor");
 
-        marine.equip("Súng trường");
-        marine.equip("Mũ sắt");
+        marine.equip("Rifle");
+        marine.equip("Steel Helmet");
 
-        cyborg.equip("Kiếm Laser");
-        cyborg.equip("Giáp Nano");
+        cyborg.equip("Laser Sword");
+        cyborg.equip("Nano Armor");
+
+        System.out.println("\n--- TESTING DUPLICATE EQUIPMENT (Should Fail) ---");
+        knight.equip("Sword");
+        marine.equip("Rifle");
+        cyborg.equip("Laser Sword");
 
 
-        // --- BƯỚC 6: HIỂN THỊ TRẠNG THÁI VÀ CHIẾN ĐẤU ---
-        System.out.println("\n--- TỔNG KIỂM TRA QUÂN ĐỘI ---");
-        SoldierGroup alliance = new SoldierGroup("Liên Minh Vượt Thời Gian");
+        System.out.println("\n--- FINAL ARMY INSPECTION ---");
+        SoldierGroup alliance = new SoldierGroup("Timeless Alliance");
         alliance.addMember(knight);
         alliance.addMember(marine);
         alliance.addMember(cyborg);
 
-        // Sử dụng Visitor để in báo cáo
         DisplayVisitor displayVisitor = new DisplayVisitor();
         alliance.accept(displayVisitor);
 
-        System.out.println("\n--- THỬ NGHIỆM CHIẾN ĐẤU ---");
+        System.out.println("\n--- COMBAT TEST ---");
         int totalDamage = alliance.hit();
-        System.out.println("\n=> Tổng sát thương liên minh gây ra: " + totalDamage);
+        System.out.println("\n=> Total damage dealt by the alliance: " + totalDamage);
 
-        System.out.println("\n--- LIÊN MINH BỊ TẤN CÔNG ---");
-        alliance.wardOff(120); // Chia đều sát thương cho các thành viên
+        System.out.println("\n--- ALLIANCE UNDER ATTACK ---");
+        alliance.wardOff(120); 
     }
 }

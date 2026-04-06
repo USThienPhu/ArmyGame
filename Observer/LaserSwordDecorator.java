@@ -7,12 +7,12 @@ class LaserSwordDecorator extends SoldierDecorator {
     public int hit() {
         int baseHit = decoratedSoldier.hit();
         if (battery > 0) {
-            int laserBonus = 40; // Sát thương cực mạnh
+            int laserBonus = 40; 
             System.out.print(" -> [LaserSword (+" + laserBonus + ") Energy: " + battery + "%]");
             battery -= 5;
             return baseHit + laserBonus;
         }
-        System.out.print(" -> [LaserSword cạn năng lượng!]");
+        System.out.print(" -> [LaserSword out of energy!]");
         return baseHit;
     }
 }

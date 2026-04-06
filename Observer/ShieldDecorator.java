@@ -7,7 +7,7 @@ class ShieldDecorator extends SoldierDecorator {
     public boolean wardOff(int strength) {
         int blockAmount = (5 * durability) / 100;
         int reducedStrength = Math.max(0, strength - blockAmount);
-        System.out.print("Shield(block " + blockAmount + ", bền: " + durability + "%) -> ");
+        System.out.print("Shield(block " + blockAmount + ", durability: " + durability + "%) -> ");
         durability = Math.max(0, durability - 15);
         return decoratedSoldier.wardOff(reducedStrength);
     }

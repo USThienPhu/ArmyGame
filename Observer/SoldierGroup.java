@@ -17,9 +17,9 @@ class SoldierGroup implements Soldier {
     @Override
     public int hit() {
         int totalHit = 0;
-        System.out.println("-> Nhóm [" + name + "] đang phối hợp tấn công:");
+        System.out.println("-> Group [" + name + "] is attacking:");
         for (Soldier member : members) {
-            totalHit += member.hit(); // Đệ quy gọi hit() của từng thành viên
+            totalHit += member.hit();
         }
         return totalHit;
     }
@@ -28,9 +28,8 @@ class SoldierGroup implements Soldier {
     public boolean wardOff(int strength) {
         if (members.isEmpty()) return false;
         
-        // Chia đều sát thương cho mỗi thành viên trong nhóm
         int damagePerMember = strength / members.size();
-        System.out.println("-> Nhóm [" + name + "] chia đều " + strength + " sát thương cho " + members.size() + " thành viên.");
+        System.out.println("-> Group [" + name + "] is dividing " + strength + " damage to " + members.size() + " members.");
         
         boolean anyAlive = false;
         for (Soldier member : members) {
@@ -43,9 +42,9 @@ class SoldierGroup implements Soldier {
 
     @Override
     public void equip(String equipmentName) {
-        System.out.println(">>> Đội quân [" + name + "]: Đồng loạt trang bị " + equipmentName);
+        System.out.println(">>> Army [" + name + "]: Equipping " + equipmentName);
         for (Soldier member : members) {
-            member.equip(equipmentName); // Chuyển tiếp yêu cầu trang bị xuống dưới
+            member.equip(equipmentName);
         }
     }
     @Override

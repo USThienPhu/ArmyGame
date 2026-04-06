@@ -7,8 +7,7 @@ class MedievalFactory implements SoldierFactory {
 
     @Override
     public void registerEraEquipment() {
-        // Thêm "Medieval" làm tham số đầu tiên
-        SoldierProxy.registerEquipment("Medieval", "Kiếm", soldier -> new SwordDecorator(soldier));
-        SoldierProxy.registerEquipment("Medieval", "Giáp sắt", soldier -> new ArmorDecorator(soldier));
+        SoldierProxy.registerEquipment("Medieval", "Sword", soldier -> new SwordDecorator(soldier));
+        SoldierProxy.registerEquipment("Medieval", "Iron Armor", soldier -> new ArmorDecorator(soldier));
     }
 }

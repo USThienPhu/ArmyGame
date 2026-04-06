@@ -1,4 +1,3 @@
-// DeathNotifierObserver.java
 public class DeathNotifierObserver implements DeathObserver {
     private static final DeathNotifierObserver instance = new DeathNotifierObserver();
 

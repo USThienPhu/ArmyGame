@@ -7,8 +7,7 @@ class WorldWarFactory implements SoldierFactory {
 
     @Override
     public void registerEraEquipment() {
-        // Thêm "WorldWar" làm tham số đầu tiên
-        SoldierProxy.registerEquipment("WorldWar", "Súng trường", soldier -> new RifleDecorator(soldier));
-        SoldierProxy.registerEquipment("WorldWar", "Mũ sắt", soldier -> new HelmetDecorator(soldier));
+        SoldierProxy.registerEquipment("WorldWar", "Rifle", soldier -> new RifleDecorator(soldier));
+        SoldierProxy.registerEquipment("WorldWar", "Steel Helmet", soldier -> new HelmetDecorator(soldier));
     }
 }

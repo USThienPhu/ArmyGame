@@ -8,7 +8,7 @@ class SwordDecorator extends SoldierDecorator {
         int baseHit = decoratedSoldier.hit();
         
         int bonus = Math.max(1, (7 * durability) / 100);
-        System.out.print(" -> Sword(+" + bonus + ", bền: " + durability + "%)");
+        System.out.print(" -> Sword(+" + bonus + ", durability: " + durability + "%)");
         durability = Math.max(0, durability - 10); 
         
         return baseHit + bonus;
