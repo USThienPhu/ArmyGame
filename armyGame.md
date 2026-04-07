@@ -1,10 +1,13 @@
-# Phần 1: Sơ đồ lớp Class Diagram Decorator
+Lab 03 - Army Game.  
+Thái Thiên Phú - 23120327
 
+# Phần 1: Trang Bị Cho Binh Lính
 
-![Sơ đồ lớp Decorator Pattern](assets/Decorator.png)
+## 1.1 Decorator Pattern class diagram
+![Decorator Pattern class diagram](assets/Decorator.png)
 
-## 1.1 Decorator Pattern
-
+## 1.2 Decorator Pattern + Proxy Pattern class diagram
+![Decorator Pattern + Proxy Pattern class diagram](assets/Part1.png)
 
 **Câu hỏi:** Theo Decorator Pattern, "chức năng của đối tượng trở nên phong phú hơn" – điều này có đúng trong trường hợp này không?
 
@@ -31,7 +34,13 @@
 
 ---
 
-## 3.2 Singleton Pattern
+# Phần 2: Tổ Chức Quân Đội
+## 2.1 Composite Pattern + Visitor Pattern class diagram
+![Composite Pattern + Visitor Pattern class diagram](assets/Part2.png)
+
+# Phần 3: Theo Dõi & Quản Lý Trận Chiến
+## 3.1 Observer Pattern + Singleton Pattern +  Abstract Factory Pattern class diagram
+![Observer Pattern + Singleton Pattern +  Abstract Factory Pattern class diagram](assets/Part3.png)
 
 **Câu hỏi:** Giải thích tại sao việc giới hạn này lại có ý nghĩa trong bối cảnh theo dõi trận chiến.  
 **Trả lời:**  
@@ -43,11 +52,8 @@
 
 * **Tiết kiệm tài nguyên:** Trận chiến có hàng ngàn quân lính (SoldierProxy), nhưng chỉ cần một thực thể theo dõi duy nhất để quản lý toàn bộ sự kiện.
 
-# Phần 2: Diagram toàn bộ hệ thống
-![](assets/DesignPattern.png)
-
-## 1. Nhóm Mẫu Cấu Trúc (Structural Patterns)
-
+# Phần 4: Tổng hợp toàn bộ hệ thống
+## 4.1 Nhóm Mẫu Cấu Trúc (Structural Patterns)
 ### **Composite Pattern**
 * **Thành phần:** `SoldierGroup`, `Soldier`.
 * **Mô tả:** Cho phép xử lý một nhóm binh lính (`SoldierGroup`) tương tự như một binh lính đơn lẻ. Các phương thức như `hit()` và `wardOff()` được thực hiện đệ quy lên tất cả các thành viên trong nhóm.
@@ -65,7 +71,7 @@
 
 ---
 
-## 2. Nhóm Mẫu Khởi Tạo (Creational Patterns)
+## 4.2 Nhóm Mẫu Khởi Tạo (Creational Patterns)
 
 ### **Abstract Factory Pattern**
 * **Thành phần:** Interface `SoldierFactory` và các factory cụ thể (`MedievalFactory`, `WorldWarFactory`, `ScienceFictionFactory`).
@@ -79,7 +85,7 @@
 
 ---
 
-## 3. Nhóm Mẫu Hành Vi (Behavioral Patterns)
+## 4.3 Nhóm Mẫu Hành Vi (Behavioral Patterns)
 
 ### **Visitor Pattern**
 * **Thành phần:** Interface `SoldierVisitor`, các lớp cụ thể `CountVisitor`, `DisplayVisitor` và phương thức `accept()` trong `Soldier`.
